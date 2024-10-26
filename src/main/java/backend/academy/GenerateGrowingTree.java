@@ -4,6 +4,11 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс, реализующий генерацию лабиринта с использованием алгоритма "Растущий дерево".
+ * Этот класс создает лабиринт, начиная с случайной ячейки и генерируя пути до тех пор,
+ * пока не будут пройдены все возможные пути, с добавлением случайных ячеек с денежными наградами.
+ */
 @SuppressWarnings("RegexpSinglelineJava")
 public class GenerateGrowingTree implements IGenerator {
     private final SecureRandom random = new SecureRandom();
@@ -13,18 +18,21 @@ public class GenerateGrowingTree implements IGenerator {
     public static final Integer ROW = 0;
     public static final Integer COL = 1;
 
-
-
-
     public Maze generate(int height, int width) {
         Maze maze = new Maze(height, width);
-        int startingRow =  random.nextInt(height - 1);
-        int startingCol = random.nextInt(width - 1);
-        generatePath(maze, startingRow, startingCol);
+        int startingRow =  random.nextInt(height);
+        int startingCol = random.nextInt(width);
+        generatePathTree(maze, startingRow, startingCol);
         return maze;
     }
 
-    private void generatePath(Maze maze, int startRow, int startCol) {
+    /**
+     * Генерирует путь в лабиринте, начиная с заданной ячейки.
+     * @param maze     Лабиринт, в котором будет сгенерирован путь.
+     * @param startRow Начальная строка для генерации пути.
+     * @param startCol Начальный столбец для генерации пути.
+     */
+    private void generatePathTree(Maze maze, int startRow, int startCol) {
         maze.setClass(startRow, startCol, Cell.Kind.PASSAGE);
         List<int[]> cellList = new ArrayList<>();
         cellList.add(new int[]{startRow, startCol});
@@ -54,13 +62,6 @@ public class GenerateGrowingTree implements IGenerator {
                 cellList.remove(ind);
             }
         }
-    }
-
-
-
-
-    private boolean isWithinBounds(int row, int col, Maze maze) {
-        return row > 0 && row < maze.getHeight() - 1 && col > 0 && col < maze.getWidth() - 1;
     }
 
 }

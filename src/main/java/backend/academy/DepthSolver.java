@@ -6,8 +6,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Класс, реализующий решение лабиринта с помощью алгоритма глубинного поиска.
+ * Этот класс находит кратчайший путь от стартовой до конечной координаты,
+ * а также максимальное количество денег на этом пути.
+ */
 @SuppressWarnings("RegexpSinglelineJava")
-
 public class DepthSolver implements Solver {
     private List<Coordinate> shortestPath = null;
     private Set<Coordinate> visited = new HashSet<>();
@@ -22,6 +26,15 @@ public class DepthSolver implements Solver {
         return shortestPath != null ? shortestPath : Collections.emptyList();
     }
 
+    /**
+     * Рекурсивный метод для поиска всех возможных путей в лабиринте.
+     *
+     * @param maze Лабиринт, по которому происходит поиск.
+     * @param now Текущая координата.
+     * @param end Конечная точкаи.
+     * @param currentPath Список координат текущего пути.
+     * @param currentMoney кол-во денег на текущем пути.
+     */
     private void findPaths(Maze maze, Coordinate now, Coordinate end, List<Coordinate> currentPath, int currentMoney) {
         if (now.equals(end)) {
             if (shortestPath == null || currentPath.size() < shortestPath.size()

@@ -9,6 +9,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Тесты для класса DepthSolver, который решает задачу о лабиринте с использованием алгоритма поиска в глубину.
+ */
 public class LabTest {
     private Maze maze;
     private DepthSolver solver;
@@ -19,6 +22,10 @@ public class LabTest {
 
     }
 
+    /**
+     * Тестирует метод solve для проверки корректности нахождения пути в лабиринте.
+     * Проверяет, что алгоритм находит правильный путь от начальной до конечной точки.
+     */
     @Test
     public void testSolve(){
         maze = new Maze(5, 5);
@@ -36,6 +43,10 @@ public class LabTest {
 
     }
 
+    /**
+     * Тестирует метод solve для случая, когда путь не найден.
+     * Проверяет, что алгоритм возвращает пустой список, если нет пути от начальной до конечной точки.
+     */
     @Test
     public void testSolveNoPathFound() {
         maze = new Maze(5, 5);

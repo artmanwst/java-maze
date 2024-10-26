@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * Класс, реализующий генерацию лабиринта с использованием алгоритма "Случайный обход".
+ * Этот класс создает лабиринт, начиная с случайной ячейки и последовательно
+ * перемещаясь по соседним ячейкам, пока не будут пройдены все возможные пути,
+ * с добавлением случайных ячеек с денежными наградами.
+ */
 public class GenerateRandomWalk implements IGenerator {
     private final SecureRandom random = new SecureRandom();
     private static final int MAX_RANDOM_VALUE = 100;
@@ -16,12 +22,18 @@ public class GenerateRandomWalk implements IGenerator {
 
     public Maze generate(int height, int width) {
         Maze maze = new Maze(height, width);
-        int startingRow =  random.nextInt(height - 2) + 1;
-        int startingCol = random.nextInt(width - 2) + 1;
+        int startingRow =  random.nextInt(height);
+        int startingCol = random.nextInt(width);
         generatePath(maze, startingRow, startingCol);
         return maze;
     }
 
+    /**
+     * Генерирует путь в лабиринте, начиная с заданной ячейки.
+     * @param maze     Лабиринт, в котором будет сгенерирован путь.
+     * @param startRow Начальная строка для генерации пути.
+     * @param startCol Начальный столбец для генерации пути.
+     */
     private void generatePath(Maze maze, int startRow, int startCol) {
 
 

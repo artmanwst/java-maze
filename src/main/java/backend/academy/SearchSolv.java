@@ -8,12 +8,20 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-
+/**
+ * Класс для решения задачи поиска кратчайшего пути в лабиринте.
+ */
 @SuppressWarnings("RegexpSinglelineJava")
 public class SearchSolv implements Solver {
     private List<Coordinate> shortestPath = null;
     private int moneyOnShortestPath = 0;
 
+    /**
+     * Решает лабиринт, используя поиск в ширину (BFS).
+     * @param maze  Лабиринт, в котором нужно найти путь.
+     * @param start Стартовая координата.
+     * @param end   Конечная координата.
+     */
     public List<Coordinate> solve(Maze maze, Coordinate start, Coordinate end) {
         Queue<PathNode> queue = new LinkedList<>();
         Set<Coordinate> visited = new HashSet<>();
@@ -56,6 +64,9 @@ public class SearchSolv implements Solver {
         return shortestPath != null ? shortestPath : Collections.emptyList();
     }
 
+    /**
+     * Внутренний класс для представления узла пути в лабиринте.
+     */
     private static class PathNode {
         Coordinate coordinate;
         List<Coordinate> path;

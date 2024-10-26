@@ -1,5 +1,13 @@
 package backend.academy;
 
+/**
+ * Класс, представляющий виды ячеек лабиринта.
+ * - WALL: стена
+ * - PASSAGE: проход
+ * - START: стартовая точка
+ * - END: конечная точка
+ * - MONEY: ячейка с деньгами
+ */
 public class Cell {
     private Kind kind;
 
@@ -13,11 +21,13 @@ public class Cell {
 
     }
 
+    /** Получает тип ячейки */
     public Kind getKind() {
         return kind;
      }
 
-     public void setKind(Kind kind) {
+    /** Устанавливает тип ячейки */
+    public void setKind(Kind kind) {
         this.kind = kind;
      }
 

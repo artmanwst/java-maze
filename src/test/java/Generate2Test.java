@@ -1,4 +1,4 @@
-import backend.academy.GenerateRandomWalk;
+import backend.academy.GenerateGrowingTree;
 import backend.academy.Maze;
 import backend.academy.Cell;
 import org.junit.jupiter.api.Test;
@@ -9,9 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Тесты для класса GenerateRandomWalk, который генерирует лабиринт.
  */
-public class GenerateTest {
-    private final GenerateRandomWalk generator = new GenerateRandomWalk();
-
+public class Generate2Test {
+    private final GenerateGrowingTree generator = new GenerateGrowingTree();
     @Test
     public void testMazeGenerateRandomWalk(){
         int height = 10;

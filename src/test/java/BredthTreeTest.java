@@ -10,6 +10,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Тесты для класса SearchSolv, реализующего решение лабиринта.
+ */
 public class BredthTreeTest {
     private Maze maze;
     private SearchSolv solver;
@@ -19,6 +22,11 @@ public class BredthTreeTest {
         solver = new SearchSolv();
 
     }
+
+    /**
+     * Тестирует метод solve для поиска пути в лабиринте.
+     * Проверяет, что ожидаемый путь совпадает с найденным путем.
+     */
     @Test
     public void testSolve(){
         maze = new Maze(5, 5);
@@ -36,6 +44,10 @@ public class BredthTreeTest {
 
     }
 
+    /**
+     * Тестирует метод solve, когда путь не найден.
+     * Проверяет, что возвращается пустой список.
+     */
     @Test
     public void testSolveNoPathFound() {
         maze = new Maze(5, 5);
